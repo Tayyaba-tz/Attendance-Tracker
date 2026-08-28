@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Attendance Tracker
 
 A role-based attendance tracking app with three roles: **Admin**, **Teacher**, and **Student**.
@@ -47,6 +46,3 @@ Runs on `http://localhost:5173`.
 - `PROMPTS.md` — prompts used during AI-assisted development
 - `AI-ASSISTANCE.md` — explanation of how AI helped throughout
 - `IMPROVEMENTS.md` — specific manual fixes made after reviewing AI-generated code
-=======
-# Attendance-Tracker
->>>>>>> d34682a12eff1340459656fa6bc812bac6d16ab1
