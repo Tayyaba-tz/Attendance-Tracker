@@ -38,8 +38,14 @@ Runs on `http://localhost:5173`.
 ## What each role can do
 
 - **Admin** — view all classes, create new classes, assign a teacher and students to each class.
-- **Teacher** — view their own assigned classes, mark attendance (present/absent) per student for a chosen date.
-- **Student** — view their own attendance history and overall attendance percentage.
+- **Teacher** — view their own assigned classes, mark attendance (present/absent) per student for a chosen date. Cannot re-submit attendance for a class on a date that's already been recorded.
+- **Student** — view their own attendance history (including which class each record belongs to) and overall attendance percentage.
+
+## Known limitations
+
+- Data is in-memory only — restarting the backend clears everything back to the seeded demo data.
+- No way to edit or delete an existing class or attendance record once created (only create).
+- No password reset / account creation flow — all accounts are pre-seeded.
 
 ## Documentation
 
