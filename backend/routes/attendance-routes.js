@@ -21,6 +21,15 @@ router.post("/", requireAuth, requireRole("teacher"), (req, res) => {
     return res.status(403).json({ error: "You do not teach this class" });
   }
 
+  const alreadyMarked = attendanceRecords.some(
+    (r) => r.classId === Number(classId) && r.date === date
+  );
+  if (alreadyMarked) {
+    return res.status(409).json({
+      error: "Attendance for this class on this date has already been recorded.",
+    });
+  }
+
   const validStudentIds = new Set(classItem.studentIds);
   const created = [];
 
@@ -57,7 +66,16 @@ router.get("/student/:studentId", requireAuth, (req, res) => {
     return res.status(403).json({ error: "You can only view your own attendance" });
   }
 
-  const records = attendanceRecords.filter((r) => r.studentId === requestedId);
+  const records = attendanceRecords
+    .filter((r) => r.studentId === requestedId)
+    .map((r) => {
+      const classItem = classes.find((c) => c.id === r.classId);
+      return {
+        ...r,
+        className: classItem ? classItem.name : `Class #${r.classId}`,
+      };
+    });
+
   res.json(records);
 });
 

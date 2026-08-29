@@ -59,6 +59,7 @@ export default function StudentDashboard() {
             <thead>
               <tr>
                 <th>Date</th>
+                <th>Class</th>
                 <th>Status</th>
               </tr>
             </thead>
@@ -66,6 +67,7 @@ export default function StudentDashboard() {
               {sorted.map((r) => (
                 <tr key={r.id}>
                   <td>{r.date}</td>
+                  <td>{r.className}</td>
                   <td>
                     <span className={`status-pill ${r.status}`}>{r.status}</span>
                   </td>

@@ -57,10 +57,13 @@ router.get("/:id/roster", requireAuth, requireRole(["teacher", "admin"]), (req, 
     return res.status(403).json({ error: "You do not teach this class" });
   }
 
-  const roster = classItem.studentIds.map((id) => {
-    const student = users.find((u) => u.id === id);
-    return { id, name: student ? student.name : `Student #${id}` };
-  });
+    const roster = classItem.studentIds
+    .slice()
+    .sort((a, b) => a - b)
+    .map((id) => {
+      const student = users.find((u) => u.id === id);
+      return { id, name: student ? student.name : `Student #${id}` };
+    });
 
   res.json(roster);
 });
